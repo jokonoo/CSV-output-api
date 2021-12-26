@@ -7,8 +7,8 @@ from .api_data_scraper import api_get_user_data, api_get_task_data
 
 
 def csv_output(request):
-    user_data = api_get_user_data()
-    task_data = api_get_task_data()
+    user_data = api_get_user_data('users')
+    task_data = api_get_task_data('todos')
     if user_data and task_data:
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=users_tasks.csv'
