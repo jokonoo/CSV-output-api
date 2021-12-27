@@ -19,4 +19,3 @@ def csv_output(request):
             writer.writerow([user.full_name, user.address.city, task.title, task.completed])
         return response
     raise Http404('No response from api')
-

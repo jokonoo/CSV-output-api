@@ -79,5 +79,3 @@ class TestSavingData(TestCase):
         self.assertEquals(self.task.user_id, self.task_data[0].get('userId'))
         self.assertEquals(self.task.id, int(self.task_data[0].get('id')))
         self.assertEquals(self.task.title, self.task_data[0].get('title'))
-
-
