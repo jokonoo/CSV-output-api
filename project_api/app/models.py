@@ -4,27 +4,20 @@ from django.db import models
 class User(models.Model):
     id = models.IntegerField(primary_key=True)
     full_name = models.CharField(null=False, blank=False, max_length=128)
-    username = models.CharField(null=True, blank=True, max_length=128)
-    email = models.EmailField(blank=True, null=True)
-    phone_number = models.CharField(null=True, blank=True, max_length=128)
-    website = models.CharField(null=True, blank=True, max_length=128)
 
     def __str__(self):
-        return f'Username: {self.full_name} with id: {self.id}'
+        return f'User: {self.full_name} with id: {self.id}'
 
 
 class Address(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    street = models.CharField(null=True, blank=True, max_length=128)
-    suite = models.CharField(null=True, blank=True, max_length=128)
     city = models.CharField(null=False, blank=False, max_length=128)
-    zipcode = models.CharField(null=True, blank=True, max_length=128)
 
     class Meta:
         verbose_name_plural = "Addresses"
 
     def __str__(self):
-        return f'{self.user.full_name} address, street: {self.street}'
+        return f'{self.user.full_name} address, city: {self.city}'
 
 
 class Task(models.Model):
